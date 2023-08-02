@@ -46,12 +46,12 @@ app.use("/sales", salesRoutes);
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 9000;
 mongoose
-  .connect(process.env.MONGO_URL, {
+  .connect(process.env.MONGO_URL='mongodb://localhost:27017/', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+    .then(() => {
+        app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
     /* ONLY ADD DATA ONE TIME */
     // AffiliateStat.insertMany(dataAffiliateStat);
